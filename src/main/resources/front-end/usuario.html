@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Padaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Gerenciar Usuários</h1>
+<a href="index.html">🏠 Voltar</a>
+
+<h2>Cadastrar Usuário</h2>
+<form id="formUsuario">
+    <input type="text" id="nome" placeholder="Nome" required>
+    <input type="text" id="cpf" placeholder="CPF" required>
+    <input type="date" id="dataNascimento" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="telefone" placeholder="Telefone" required>
+    <button type="submit">Cadastrar</button>
+</form>
+
+<h2>Lista de Usuários</h2>
+<div id="listaUsuarios"></div>
+
+<script>
+    const API = "http://localhost:8080/usuario";
+
+    document.getElementById("formUsuario").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const usuario = {
+            nome: document.getElementById("nome").value,
+            cpf: document.getElementById("cpf").value,
+            dataNascimento: document.getElementById("dataNascimento").value,
+            email: document.getElementById("email").value,
+            telefone: document.getElementById("telefone").value
+        };
+        await fetch(API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(usuario)
+        });
+        alert("Usuário cadastrado!");
+        carregarUsuarios();
+    });
+
+    async function carregarUsuarios() {
+        const res = await fetch(API);
+        const usuarios = await res.json();
+        const div = document.getElementById("listaUsuarios");
+        div.innerHTML = "";
+        usuarios.forEach(u => {
+            div.innerHTML += `<p>${u.nome} - ${u.cpf}
+                    <button onclick="deletarUsuario('${u.cpf}')">Excluir</button></p>`;
+        });
+    }
+
+    async function deletarUsuario(cpf) {
+        await fetch(API + "?cpf=" + cpf, { method: "DELETE" });
+        carregarUsuarios();
+    }
+
+    carregarUsuarios();
+</script>
+</body>
+</html>
+

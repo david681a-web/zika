@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Compra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Registrar Compra</h1>
+<a href="index.html">🏠 Voltar</a>
+
+<form id="formCompra">
+    <select id="usuario" required></select>
+    <select id="produto" multiple required></select>
+    <button type="submit">Finalizar Compra</button>
+</form>
+
+<script>
+    const API_COMPRA = "http://localhost:8080/compra";
+    const API_USUARIO = "http://localhost:8080/usuario";
+    const API_PRODUTO = "http://localhost:8080/padaria";
+
+    async function carregarUsuarios() {
+        const res = await fetch(API_USUARIO);
+        const usuarios = await res.json();
+        const sel = document.getElementById("usuario");
+        usuarios.forEach(u => {
+            sel.innerHTML += `<option value="${u.id}">${u.nome}</option>`;
+        });
+    }
+
+    async function carregarProdutos() {
+        const res = await fetch(API_PRODUTO);
+        const produtos = await res.json();
+        const sel = document.getElementById("produto");
+        produtos.forEach(p => {
+            sel.innerHTML += `<option value="${p.id}">${p.nome} - R$${p.preco.toFixed(2)}</option>`;
+        });
+    }
+
+    document.getElementById("formCompra").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const usuarioId = document.getElementById("usuario").value;
+        const produtosIds = Array.from(document.getElementById("produto").selectedOptions).map(o => o.value);
+        const compra = {
+            usuarioId: usuarioId,
+            produtosIds: produtosIds
+        };
+        await fetch(API_COMPRA, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(compra)
+        });
+        alert("Compra registrada!");
+    });
+
+    carregarUsuarios();
+    carregarProdutos();
+</script>
+</body>
+</html>
