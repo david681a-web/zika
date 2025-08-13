@@ -1,4 +1,4 @@
-const API_PRODUTO = "http://localhost:8081/padaria"; // Troque para a URL do Render depois
+const API_PRODUTO = "http://localhost:8080/padaria"; // Troque para a URL do Render depois
 
 // CADASTRAR PRODUTO
 document.getElementById("formProduto").addEventListener("submit", async function (e) {
