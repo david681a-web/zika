@@ -1,6 +1,6 @@
-const API_USUARIO = "http://localhost:8080/usuario";
-const API_PRODUTO = "http://localhost:8080/padaria";
-const API_COMPRA  = "http://localhost:8080/compra";
+const API_USUARIO = "http://localhost:63342/usuario";
+const API_PRODUTO = "http://localhost:63342/padaria";
+const API_COMPRA  = "http://localhost:63342/compra";
 
 // CARREGAR USUÁRIOS NO SELECT
 async function carregarUsuarios() {
