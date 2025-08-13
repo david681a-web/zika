@@ -40,7 +40,8 @@ public class UsuarioService {
         repository.saveAndFlush(usuarioEntity);
 
     }
-    public List<Usuario>listarTodos(){
+    public List<Usuario> listarTodos() {
         return repository.findAll();
     }
+
 }

@@ -4,6 +4,8 @@ import com.example.padaria_paotorrado.infrastructure.entitys.Padaria;
 import com.example.padaria_paotorrado.infrastructure.repository.PadariaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PadariaService {
 
@@ -39,5 +41,8 @@ public class PadariaService {
                 .build();
 
         repositorio.save(atualizado);
+    }
+    public List<Padaria> listarTodos() {
+        return repositorio.findAll();
     }
 }

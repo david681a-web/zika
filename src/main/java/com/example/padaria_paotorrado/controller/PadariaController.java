@@ -2,9 +2,12 @@ package com.example.padaria_paotorrado.controller;
 
 import com.example.padaria_paotorrado.Business.PadariaService;
 import com.example.padaria_paotorrado.infrastructure.entitys.Padaria;
+import com.example.padaria_paotorrado.infrastructure.entitys.Usuario;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/padaria")
@@ -35,4 +38,10 @@ public class PadariaController {
         padariaService.deletarProduto(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping
+    public ResponseEntity<List<Padaria>> listarProdutos() {
+        return ResponseEntity.ok(padariaService.listarTodos());
+    }
+
+
 }
