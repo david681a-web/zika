@@ -5,13 +5,11 @@ import com.example.padaria_paotorrado.dto.CompraRequestoDTO;
 import com.example.padaria_paotorrado.infrastructure.entitys.Compra;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/compra")
+@CrossOrigin(origins = "http://localhost:63342")
 @RequiredArgsConstructor
 public class CompraController {
 

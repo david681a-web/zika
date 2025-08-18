@@ -1,21 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Compra</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Registrar Compra - Padaria Pão Torrado</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #5a3e36;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        select, form button {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        form button {
+            background: linear-gradient(135deg, #ffb347, #ffcc33);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        form button:hover {
+            background: linear-gradient(135deg, #ffcc33, #ff914d);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        a.voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        a.voltar:hover {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            transform: translateY(-3px);
+        }
+
+        /* Nota de compra */
+        .nota {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #fef9f0;
+            border: 1px dashed #ff914d;
+            max-width: 100%;
+            font-family: monospace;
+            text-align: left;
+        }
+
+        .nota h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #5a3e36;
+        }
+
+        .nota ul {
+            padding-left: 18px;
+            margin: 8px 0;
+        }
+
+        .linha {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<h1>Registrar Compra</h1>
-<a href="index.html">🏠 Voltar</a>
 
-<form id="formCompra">
-    <select id="usuario" required></select>
-    <select id="produto" multiple required></select>
-    <button type="submit">Finalizar Compra</button>
-</form>
+<!-- Pães voando -->
+<img src="pao01.png" alt="pão" class="pao pao1">
+<img src="pao01.png" alt="pão" class="pao pao2">
+<img src="pao02.png" alt="pão" class="pao pao3">
+<img src="pao02.png" alt="pão" class="pao pao4">
 
-<script src="compra.js"></script>
+<div class="container">
+    <h1>🛒 Registrar Compra</h1>
+    <a href="index.html" class="voltar">🏠 Voltar</a>
+
+    <form id="formCompra">
+        <select id="usuario" required></select>
+        <select id="produto" multiple required></select>
+        <button type="submit">Finalizar Compra</button>
+    </form>
+
+    <!-- Notinha -->
+    <div id="notaCompra" class="nota" style="display:none;">
+        <h3>RECIBO DE COMPRA</h3>
+        <p><strong>Cliente:</strong> <span id="nomeCliente"></span></p>
+        <p><strong>CPF:</strong> <span id="cpfCliente"></span></p>
+        <hr/>
+        <ul id="listaProdutos"></ul>
+        <hr/>
+        <div class="linha">
+            <span>Total:</span>
+            <span>R$ <span id="totalCompra"></span></span>
+        </div>
+    </div>
+</div>
+
+<script src="pasta-para-js/compra.js"></script>
 </body>
 </html>

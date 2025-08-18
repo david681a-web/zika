@@ -4,15 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Padaria Pão Torrado</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Botões principais com gradiente e hover */
+        .botoes a {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1em;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffb347, #ffcc33); /* laranja pão */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 10px 0;
+        }
+
+        .botoes a:hover {
+            background: linear-gradient(135deg, #ffcc33, #ff914d);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .perfil {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #ffb347;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .subtitulo {
+            color: #083ba0;
+            font-size: 1em;
+            margin-bottom: 25px;
+        }
+
+        .redes img {
+            width: 32px;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .redes img:hover {
+            transform: scale(1.2);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.85em;
+            color: #083ba0;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-<h1>🍞 Padaria Pão Torrado</h1>
-<nav>
-    <a href="usuario.html">Gerenciar Usuários</a>
-    <a href="padaria.html">Gerenciar Produtos</a>
-    <a href="compra.html">Registrar Compra</a>
-</nav>
+
+<!-- Pães voando -->
+<img src="pao01.png" alt="pão" class="pao pao1">
+<img src="pao01.png" alt="pão" class="pao pao2">
+<img src="pao02.png" alt="pão" class="pao pao3">
+<img src="pao02.png" alt="pão" class="pao pao4">
+
+<div class="container">
+    <!-- Logo / Perfil -->
+    <img src="didi.png" alt="Perfil" class="perfil">
+
+    <!-- Título -->
+    <h1>🥐 Padaria Pão Torrado</h1>
+    <p class="subtitulo">O sabor do pão quentinho, agora online!</p>
+
+    <!-- Botões principais -->
+    <div class="botoes">
+        <a href="usuario.html">👤 Usuário</a>
+        <a href="compra.html">🛒 Comprar</a>
+        <a href="padaria.html">🍞 Produtos</a>
+    </div>
+
+    <!-- Redes sociais -->
+    <div class="redes">
+        <a href="https://wa.me/5561992081256?text=quero%20pau%20torrado"><img src="zap01-removebg-preview.png" alt="ZAP ZAP"></a>
+        <a href="https://www.instagram.com/david_eduoli/"><img src="instagram.jpg" alt="Instagram"></a>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        ✨ Não seguimos de volta ✨
+    </footer>
+</div>
+
 </body>
 </html>
-

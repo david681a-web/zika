@@ -3,23 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Padaria</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Produtos - Padaria Pão Torrado</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #5a3e36;
+        }
+
+        h2 {
+            color: #083ba0;
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        input, form button {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+
+        form button {
+            background: linear-gradient(135deg, #ffb347, #ffcc33);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        form button:hover {
+            background: linear-gradient(135deg, #ffcc33, #ff914d);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        a.voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        a.voltar:hover {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            transform: translateY(-3px);
+        }
+
+        #listaProdutos {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .produto-card {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 5px solid #ff914d;
+        }
+    </style>
 </head>
 <body>
-<h1>Gerenciar Produtos</h1>
-<a href="index.html">🏠 Voltar</a>
 
-<h2>Cadastrar Produto</h2>
-<form id="formProduto">
-    <input type="text" id="nome" placeholder="Nome do Produto" required>
-    <input type="number" step="0.01" id="preco" placeholder="Preço" required>
-    <button type="submit">Cadastrar</button>
-</form>
+<!-- Pães voando -->
+<img src="pao01.png" alt="pão" class="pao pao1">
+<img src="pao01.png" alt="pão" class="pao pao2">
+<img src="pao02.png" alt="pão" class="pao pao3">
+<img src="pao02.png" alt="pão" class="pao pao4">
 
-<h2>Lista de Produtos</h2>
-<div id="listaProdutos"></div>
+<div class="container">
+    <h1>🍞 Gerenciar Produtos</h1>
+    <a href="index.html" class="voltar">🏠 Voltar</a>
 
-<script src="padaria.js"></script>
+    <h2>Cadastrar Produto</h2>
+    <form id="formProduto">
+        <input type="text" id="nome" placeholder="Nome do Produto" required>
+        <input type="number" step="0.01" id="preco" placeholder="Preço" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <div id="listaProdutos"></div>
+</div>
+
+<script src="pasta-para-js/padaria.js"></script>
 </body>
 </html>

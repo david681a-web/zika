@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/padaria")
+@CrossOrigin(origins = "http://localhost:63342")
 @RequiredArgsConstructor
 public class PadariaController {
 
