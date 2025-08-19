@@ -1,15 +1,19 @@
+# ------------------------------
 # Etapa 1: Build da aplicação com Maven
+# ------------------------------
 FROM maven:3.8.5-openjdk-17 AS builder
 WORKDIR /app
 
-# Copia todos os arquivos do projeto
+# Copia o pom e o código fonte
 COPY pom.xml .
 COPY src ./src
 
 # Build do projeto sem executar testes
 RUN mvn clean package -DskipTests
 
+# ------------------------------
 # Etapa 2: Imagem final para rodar o JAR
+# ------------------------------
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
@@ -23,6 +27,9 @@ EXPOSE 8080
 # Variável para Spring Boot usar a porta dinâmica do Render
 ENV SERVER_PORT=${PORT}
 
+# Habilita UTF-8 e Spring perfil default
+ENV LANG=C.UTF-8
+ENV SPRING_PROFILES_ACTIVE=default
+
 # Comando para iniciar o app
 ENTRYPOINT ["java","-jar","app.jar"]
-
