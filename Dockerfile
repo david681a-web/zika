@@ -4,7 +4,7 @@
 FROM maven:3.8.5-openjdk-17 AS builder
 WORKDIR /app
 
-# Copia o pom e o código fonte
+# Copia pom e código-fonte
 COPY pom.xml .
 COPY src ./src
 
@@ -27,9 +27,9 @@ EXPOSE 8080
 # Variável para Spring Boot usar a porta dinâmica do Render
 ENV SERVER_PORT=${PORT}
 
-# Habilita UTF-8 e Spring perfil default
+# Habilita UTF-8 e perfil padrão
 ENV LANG=C.UTF-8
 ENV SPRING_PROFILES_ACTIVE=default
 
 # Comando para iniciar o app
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
